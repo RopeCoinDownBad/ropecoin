@@ -1,0 +1,47 @@
+type BurnAndSendFeesResponse = record {
+  amount_burned : nat;
+  amount_sent : nat;
+};
+type CanisterStatus = variant { Stopped; Stopping; Running };
+type CanisterStatusRequest = record { canister_id : principal };
+type CanisterStatusResponse = record {
+  status : CanisterStatus;
+  memory_size : nat64;
+  cycles : nat64;
+  settings : DefiniteCanisterSettings;
+  module_hash : opt blob;
+};
+type DefiniteCanisterSettings = record {
+  freezing_threshold : nat64;
+  controllers : vec principal;
+  memory_allocation : nat64;
+  compute_allocation : nat64;
+};
+type EnvName = variant { IC; Local; Staging };
+type EnvVars = record {
+  ropecoin_ledger_canister_id : text;
+  authorized_principal : text;
+  marketing_account : text;
+  blackhole_account : text;
+};
+type RejectionCode = variant {
+  NoError;
+  CanisterError;
+  SysTransient;
+  DestinationInvalid;
+  Unknown;
+  SysFatal;
+  CanisterReject;
+};
+type Result = variant { Ok : BurnAndSendFeesResponse; Err : text };
+type Result_1 = variant {
+  Ok : CanisterStatusResponse;
+  Err : record { RejectionCode; text };
+};
+service : (EnvName) -> {
+  __get_candid_interface_tmp_hack : () -> (text) query;
+  burn_and_send_fees : () -> (Result);
+  canister_status : (CanisterStatusRequest) -> (Result_1) query;
+  get_env : () -> (EnvName) query;
+  get_env_vars : () -> (EnvVars) query;
+}

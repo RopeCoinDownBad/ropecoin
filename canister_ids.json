@@ -1,0 +1,22 @@
+{
+  "blackhole": {
+    "ic": "wdo7p-tqaaa-aaaai-q3z3a-cai",
+    "staging": "2v5sa-gqaaa-aaaai-q3yva-cai"
+  },
+  "fee_collector": {
+    "ic": "wepz3-6iaaa-aaaai-q3z3q-cai",
+    "staging": "zlmvo-baaaa-aaaai-q3y4a-cai"
+  },
+  "ropecoin": {
+    "ic": "xjb5v-raaaa-aaaai-q3z4a-cai",
+    "staging": "74bzi-mqaaa-aaaai-q3yja-cai"
+  },
+  "ropecoin_index_canister": {
+    "ic": "7ohor-aaaaa-aaaai-q3yka-cai",
+    "staging": "7jgif-nyaaa-aaaai-q3ykq-cai"
+  },
+  "ropecoin_ledger_canister": {
+    "ic": "xoa3b-4yaaa-aaaai-q3z4q-cai",
+    "staging": "73a74-biaaa-aaaai-q3yjq-cai"
+  }
+}

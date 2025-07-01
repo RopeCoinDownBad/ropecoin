@@ -1,0 +1,23 @@
+(
+  record {
+    token_name = "Ropecoin";
+    token_symbol = "ROPE";
+    minting_account = record { owner = principal "YOUR_PRINCIPAL_HERE" };
+    transfer_fee = 1000 : nat;
+    metadata = vec {};
+    initial_balances = vec {
+      record {
+        account = record { owner = principal "YOUR_PRINCIPAL_HERE" };
+        amount = 1_000_000_000_000 : nat; // 1 billion ROPE
+      }
+    };
+    archive_options = record {
+      num_blocks_to_archive = 1000 : nat64;
+      trigger_threshold = 2000 : nat64;
+      max_message_size_bytes = null;
+      cycles_for_archive_creation = null;
+      node_max_memory_size_bytes = null;
+      controller_id = principal "YOUR_PRINCIPAL_HERE";
+    };
+  }
+)

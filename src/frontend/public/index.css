@@ -1,0 +1,1084 @@
+/*
+Import the font stylesheet.
+If not supported you can add backup via:
+<link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+inside your html file.
+*/
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+/**
+* Customized scrollbars
+*/
+/* to get pixelated images (nearest-neighbor filter) on all  browsers */
+.pixelated {
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* unselectable text */
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* center things */
+.center {
+  text-align: center;
+  align-content: center;
+}
+
+/* rotate object 90 degrees */
+.rotate-90 {
+  /* rotate 90 degrees */
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /* rotate from center-left side */
+  -ms-transform-origin: 0% 50%;
+  /* IE 9 */
+  -webkit-transform-origin: 0% 50%;
+  /* Chrome, Safari, Opera */
+  transform-origin: 0% 50%;
+}
+
+/**
+* Styling for buttons
+*/
+/* button style */
+.button {
+  /* hide button default stuff */
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  /* background */
+  background: url("styles/button.png") no-repeat no-repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+  background-size: 100% 100%;
+  /* font size */
+  font-size: 1em;
+  /* default size and display */
+  max-width: 100%;
+  min-width: 140px;
+  height: 60px;
+  display: inline-block;
+  /* padding */
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+/* button hover */
+.button.hover,
+.button:hover {
+  background-image: url("styles/button-hover.png");
+}
+
+/* button clicked */
+.button.down,
+.button:active {
+  background-image: url("styles/button-down.png");
+}
+
+/* golden button stuff */
+.button.golden p {
+  display: inline-block;
+}
+
+/* golden button style */
+.button.golden {
+  /* hide button default stuff */
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  /* background */
+  background: url("styles/button-golden.png") no-repeat no-repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+  background-size: 100% 80%;
+  /* default size and display */
+  max-width: 100%;
+  min-width: 140px;
+  height: 60px;
+  display: inline-block;
+  /* padding */
+  padding-top: 5px;
+  padding-left: 35px;
+  padding-right: 35px;
+  overflow: visible;
+}
+
+/* button hover */
+.button.golden.hover,
+.button.golden:hover {
+  background-image: url("styles/button-golden-hover.png");
+}
+
+/* button clicked */
+.button.golden.down,
+.button.golden:active {
+  background-image: url("styles/button-golden-down.png");
+}
+
+.button.golden:before {
+  white-space: nowrap;
+  content: "";
+  width: 34px;
+  display: block;
+  height: 110%;
+  background: transparent url("styles/button-golden-left.png") no-repeat right
+    center;
+  background-size: 100% 100%;
+  margin: 0 0 0 0;
+  left: 0px;
+  float: left;
+  margin-left: -46px;
+  margin-top: -5%;
+}
+
+.button.golden:after {
+  white-space: nowrap;
+  display: block;
+  content: "";
+  width: 34px;
+  height: 110%;
+  background: transparent url("styles/button-golden-right.png") no-repeat left
+    center;
+  background-size: 100% 100%;
+  margin: 0 0 0 0;
+  right: 0px;
+  float: right;
+  margin-right: -46px;
+  margin-top: -5%;
+}
+
+/*
+.button.golden:hover:before {
+
+    background-image: url('styles/button-golden-left-hover.png');
+}
+
+.button.golden:hover:after {
+
+    background-image: url('styles/button-golden-right-hover.png');
+}
+*/
+/**
+* style for checkboxes
+*/
+/* basic checkbox */
+.content input[type="checkbox"].checkbox {
+  display: none;
+}
+
+.content input[type="checkbox"].checkbox + label {
+  background: url("styles/checkbox-off.png") no-repeat;
+  line-height: 24px;
+  display: inline-block;
+  background-size: auto 100%;
+  padding-left: 34px;
+  height: 24px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.content input[type="checkbox"].checkbox:checked + label {
+  background: url("styles/checkbox-on.png") no-repeat;
+  line-height: 24px;
+  display: inline-block;
+  background-size: auto 100%;
+  padding-left: 34px;
+  height: 24px;
+}
+
+/* golden checkbox */
+.content input[type="checkbox"].checkbox.golden + label {
+  background: url("styles/checkbox-golden-off.png") no-repeat;
+  background-size: auto 100%;
+}
+
+.content input[type="checkbox"].checkbox.golden:checked + label {
+  background: url("styles/checkbox-golden-on.png") no-repeat;
+  background-size: auto 100%;
+}
+
+/**
+* global content styling
+*/
+/* game div with background image*/
+.content {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  overflow: hidden;
+  font-size: 0.8em;
+}
+
+/* general rules to apply on anything inside the content */
+.content * {
+  /* remove outline effect for input elements etc */
+  outline: none;
+
+  -webkit-user-drag: none;
+  /* prevent text selecting */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  /* pixelated enlargement filter (to keep the pixel-art style when enlarging pictures) */
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: pixelated;
+  /* default font */
+  font-family: "Press Start 2P", cursive;
+}
+
+/**
+* customized divs (containers) and framed objects (background and frame image).
+*/
+/* game div without background image*/
+.container {
+  /* position style and default z */
+  position: fixed;
+  z-index: 10;
+  overflow: show;
+}
+
+/* game div with background image*/
+.container.framed {
+  /* border */
+  border-style: solid;
+  border-image-source: url("styles/border-image.png");
+  border-image-repeat: repeat;
+  border-image-slice: 6 6 6 6;
+  border-image-width: 18px;
+  border-width: 15px;
+  padding: 12px;
+  /* internal border */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* background */
+  background: url("styles/background-image.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* game div with golden background image*/
+.container.framed-golden {
+  /* border */
+  border-style: solid;
+  border-image-source: url("styles/border-image-golden.png");
+  border-image-repeat: repeat;
+  border-image-slice: 4 4 4 4;
+  border-image-width: 18px;
+  border-width: 15px;
+  padding: 12px;
+  /* internal border */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* background */
+  background: url("styles/background-image-golden.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* game div with golden2 background image*/
+.container.framed-golden-2 {
+  /* border */
+  border-style: solid;
+  border-image-source: url("styles/border-image-golden2.png");
+  border-image-repeat: repeat;
+  border-image-slice: 8 8 8 8;
+  border-image-width: 18px;
+  border-width: 15px;
+  padding: 12px;
+  /* internal border */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* background */
+  background: url("styles/background-image-golden2.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* game div with soft grey background image*/
+.container.framed-grey {
+  position: relative;
+  /* border */
+  border-style: solid;
+  border-image-source: url("styles/border-image-grey.png");
+  border-image-repeat: repeat;
+  border-image-slice: 3 3 3 3;
+  border-image-width: 7px;
+  border-width: 7px;
+  padding: 12px;
+  /* internal border */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  /* background */
+  background: url("styles/background-image-grey.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/**
+* different cursor graphics
+*/
+/* default cursor important */
+/* this rule is for when you specifically request this cursor class */
+.cursor-default {
+  cursor: url("styles/cursor/default.png"), auto !important;
+}
+
+/* default cursor, not important, for all elements without any other rule. */
+.content,
+label {
+  cursor: url("styles/cursor/default.png"), auto;
+}
+
+/* pointer / hand cursor important */
+/* this rule is for when you specifically request this cursor class */
+.cursor-point,
+.cursor-point * {
+  cursor: url("styles/cursor/point.png") 10 0, auto !important;
+}
+
+/* pointer / hand cursor, not important, for all elements that have pointer by-default */
+.content a,
+.content button,
+.button,
+.slider-container,
+.content input[type="radio"].radio + label,
+.list-imp,
+.dropdown-imp,
+.content input[type="checkbox"].checkbox + label {
+  cursor: url("styles/cursor/point.png") 10 0, auto;
+}
+
+/* for input / text selection important */
+/* this rule is for when you specifically request this cursor class */
+.cursor-select,
+.cursor-select * {
+  cursor: url("styles/cursor/select.png") 10 0, auto !important;
+}
+
+/* for input / text selection, not important, for all elements that have pointer by-default */
+.cursor-select,
+.content input,
+.content textarea {
+  cursor: url("styles/cursor/select.png") 10 0, auto;
+}
+
+/* for grabbing stuff */
+/* this rule is for when you specifically request this cursor class */
+.cursor-grab-open,
+.cursor-grab-open * {
+  cursor: url("styles/cursor/grab-open.png") 10 0, auto !important;
+}
+
+/* for grabbing stuff */
+/* this rule is for when you specifically request this cursor class */
+.cursor-grab-close,
+.cursor-grab-close * {
+  cursor: url("styles/cursor/grab-close.png") 10 0, auto !important;
+}
+
+/**
+* Customized dropdown.
+*/
+/* dropdown box implemented with list (see dropdown.js for details) */
+/* note! this class rule affect both the dropdown header and the list elements! */
+.dropdown-imp,
+.dropdown {
+  /* font */
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
+  /* default size */
+  min-height: 40px;
+  margin-top: 0px;
+  /* border */
+  border-style: solid;
+  border-width: 7px 7px 7px 7px;
+  -moz-border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  -webkit-border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  -o-border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  /* background */
+  background: url("styles/select-background-image.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* dropdown options list */
+ul.dropdown-imp {
+  padding: 0 0 0 0 !important;
+  z-index: 100;
+}
+
+/* note! this affect only the dropdown header */
+/* shows the currently selected value from select element */
+.content .dropdown-imp-header {
+  color: white !important;
+  min-height: 22px !important;
+  padding: 5px 10px 0 10px !important;
+  margin: 0 0 0 0 !important;
+  position: relative !important;
+}
+
+/* dropdown options */
+.dropdown-imp li {
+  /* font */
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
+  height: 16px;
+  /* remove the dot */
+  list-style-type: none;
+  /* padding */
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  /* background */
+  background: url("styles/select-background-image.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* dropdown options hover */
+.dropdown-imp li:hover {
+  color: yellow;
+}
+
+/* dropdown hover */
+.dropdown-imp:hover {
+  color: yellow;
+}
+
+/**
+* hr styling
+*/
+/* hr */
+.content hr {
+  display: block;
+  border: 0px;
+  height: 10px;
+  background: url("styles/hr.png") repeat-x top left;
+}
+
+/* golden hr */
+.content hr.golden {
+  display: block;
+  border: 0px;
+  height: 10px;
+  background: url("styles/hr-golden.png") no-repeat top left;
+  background-size: 100% 100%;
+}
+
+/**
+* Icon styles.
+*/
+.icon {
+  display: inline-block;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 64px;
+}
+
+.icon.sword {
+  background-image: url("styles/icons/sword.png");
+}
+
+.icon.shield {
+  background-image: url("styles/icons/shield.png");
+}
+
+.icon.exclamation {
+  background-image: url("styles/icons/exclamation.png");
+}
+
+.icon.potion-red {
+  background-image: url("styles/icons/potion-red.png");
+}
+
+.icon.potion-green {
+  background-image: url("styles/icons/potion-green.png");
+}
+
+.icon.potion-blue {
+  background-image: url("styles/icons/potion-blue.png");
+}
+
+.icon.weapon-slot {
+  background-image: url("styles/icons/weapon-slot.png");
+}
+
+.icon.shield-slot {
+  background-image: url("styles/icons/shield-slot.png");
+}
+
+.icon.armor-slot {
+  background-image: url("styles/icons/armor-slot.png");
+}
+
+.icon.helmet-slot {
+  background-image: url("styles/icons/helmet-slot.png");
+}
+
+.icon.ring-slot {
+  background-image: url("styles/icons/ring-slot.png");
+}
+
+.icon.potion-slot {
+  background-image: url("styles/icons/potion-slot.png");
+}
+
+.icon.magic-slot {
+  background-image: url("styles/icons/magic-slot.png");
+}
+
+.icon.shoes-slot {
+  background-image: url("styles/icons/shoes-slot.png");
+}
+
+.icon.empty-slot {
+  background-image: url("styles/icons/empty-slot.png");
+}
+
+/**
+* input styling
+*/
+/* input/textarea input */
+.content input,
+.content textarea {
+  /* set size and colors */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 0.9em;
+  line-height: 32px;
+  background: #4e4a4e;
+  max-width: 100%;
+  width: 100%;
+  padding-left: 10px;
+  /* for ie */
+  min-height: 30px;
+  /* enable text selecting */
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.5);
+}
+
+/* textarea extra rules */
+.content textarea {
+  line-height: 22px;
+  padding-top: 7px;
+  height: 80px;
+  resize: none;
+}
+
+/* selection highlight */
+.content input::selection,
+.content textarea::selection {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content input::-moz-selection,
+.content textarea::-moz-selection {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* dropdown box implemented with list (see dropdown.js for details) */
+/* note! this class rule affect both the dropdown header and the list elements! */
+.list-imp {
+  /* font */
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
+  /* default size */
+  min-height: 40px;
+  margin-top: 0px;
+  /* scrollers */
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* border */
+  border-style: solid;
+  border-width: 7px 7px 7px 7px;
+  -moz-border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  -webkit-border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  -o-border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  border-image: url("styles/select-border-image.png") 10% repeat repeat;
+  /* background */
+  background: url("styles/select-background-image.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* dropdown options list */
+ul.list-imp {
+  padding: 0 0 0 0 !important;
+  z-index: 100;
+}
+
+/* dropdown options */
+.list-imp li {
+  /* font */
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
+  height: 16px;
+  margin-left: 5px !important;
+  /* remove the dot */
+  list-style-type: none;
+  /* padding */
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  /* background */
+  background: url("styles/select-background-image.png") repeat repeat;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  background-position: center;
+}
+
+/* list options hover */
+.list-imp li:hover {
+  color: yellow;
+}
+
+/* list hover */
+.list-imp:hover {
+  color: yellow;
+}
+
+.list-imp .selected {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/**
+* Paragraphs and headers while inside a container.
+*/
+/* default gui header */
+.content h1 {
+  /* color and border */
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1.14em;
+  /* center text */
+  text-align: center;
+  /* padding */
+  padding: 0 0 0 0;
+  margin: 7px 7px 17px 7px;
+}
+
+/* default gui header2 */
+.content h2 {
+  /* color and border */
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1.25em;
+  /* center text */
+  text-align: center;
+  /* padding */
+  padding: 0 0 0 0;
+  margin: 7px 7px 17px 7px;
+}
+
+/* default gui header3 */
+.content h3 {
+  /* color and border */
+  color: white;
+  font-weight: 1;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1.15em;
+  text-decoration: underline;
+  /* center text */
+  text-align: center;
+  /* padding */
+  padding: 0 0 0 0;
+  margin: 7px 7px 17px 7px;
+}
+
+/* default gui header4 */
+.content h4 {
+  /* color and border */
+  color: white;
+  font-weight: 1;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1em;
+  text-decoration: underline;
+  /* center text */
+  text-align: center;
+  /* padding */
+  padding: 0 0 0 0;
+  margin: 7px 7px 17px 7px;
+}
+
+/* default p */
+.content p {
+  /* color and border */
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1em;
+  line-height: 22px;
+}
+
+/* default span */
+.content span {
+  /* color and border */
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1em;
+  line-height: 22px;
+}
+
+/* default gui link */
+.content a {
+  /* color and border */
+  color: yellow;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1em;
+  line-height: 22px;
+  text-decoration: none;
+}
+
+/* default gui link */
+.content a:hover {
+  text-decoration: underline;
+}
+
+/* default gui label */
+.content label {
+  /* color and border */
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1em;
+  line-height: 20px;
+  display: inline;
+}
+
+/* default gui label */
+.content li {
+  /* color and border */
+  margin-left: 20px;
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size: 1em;
+  line-height: 22px;
+}
+
+/*
+* progress bar styling
+*/
+/* progress bar container */
+.progress {
+  height: 42px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+/* progress bar left edge */
+.progress-left-edge {
+  position: absolute;
+  height: 42px;
+  width: 40px;
+  left: 0px;
+  background-image: url("styles/progress-bar-left.png");
+  background-size: 100% 100%;
+}
+
+/* progress bar right edge */
+.progress-right-edge {
+  position: absolute;
+  height: 42px;
+  width: 40px;
+  right: 0px;
+  background-image: url("styles/progress-bar-right.png");
+  background-size: 100% 100%;
+}
+
+/* progress bar background track */
+.progress-track {
+  position: absolute;
+  height: 42px;
+  left: 40px;
+  right: 40px;
+  background-image: url("styles/progress-bar-track.png");
+  background-repeat: repeat-x;
+  background-size: 36px 100%;
+}
+
+/* progress bar - the fill itself */
+.progress-fill {
+  position: absolute;
+  top: 9px;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  background-image: url("styles/progress.png");
+  background-repeat: repeat-x;
+  background-size: 36px 100%;
+}
+
+/* progress bar - blue color */
+.progress-fill.blue {
+  background-image: url("styles/progress-blue.png");
+}
+
+/* progress bar - green color */
+.progress-fill.green {
+  background-image: url("styles/progress-green.png");
+}
+
+/* progress bar - red color */
+.progress-fill.red {
+  background-image: url("styles/progress-red.png");
+}
+
+/**
+* style for radioes
+*/
+/* radio box */
+.content input[type="radio"].radio {
+  display: none;
+}
+
+.content input[type="radio"].radio + label {
+  background: url("styles/radio-off.png") no-repeat;
+  line-height: 24px;
+  display: inline-block;
+  background-size: auto 100%;
+  padding-left: 34px;
+  height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.content input[type="radio"].radio:checked + label {
+  background: url("styles/radio-on.png") no-repeat;
+  line-height: 24px;
+  display: inline-block;
+  background-size: auto 100%;
+  padding-left: 34px;
+  height: 24px;
+}
+
+/* golden radio */
+.content .radio.golden + label {
+  background: url("styles/radio-golden-off.png") no-repeat !important;
+  background-size: auto 100% !important;
+}
+
+.content .radio.golden:checked + label {
+  background: url("styles/radio-golden-on.png") no-repeat !important;
+  background-size: auto 100% !important;
+}
+
+/**
+* Rules for misc and general things.
+*/
+/* set scrollbars for webkit browsers (like chrome) */
+.content ::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  width: 18px;
+}
+
+/* Track */
+.content ::-webkit-scrollbar-track,
+.content::-webkit-scrollbar-track {
+  background-image: url("styles/scrollbar-track.png");
+  background-size: 18px 60px;
+  background-repeat: repeat-y;
+}
+
+/* Handle */
+.content ::-webkit-scrollbar-thumb,
+.content::-webkit-scrollbar-thumb {
+  background-image: url("styles/scrollbar-thumb.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* buttons */
+.content ::-webkit-scrollbar-button,
+.content::-webkit-scrollbar-button {
+  background-image: url("styles/scrollbar-button.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/**
+* for disabled elements
+*/
+/* disabled object */
+.disabled,
+.content :disabled,
+.content input[type="radio"]:disabled + label,
+.content input[type="checkbox"]:disabled + label,
+.content input[type="range"]:disabled + .slider-container,
+.content :disabled + .dropdown-imp,
+.content :disabled + .dropdown-imp + .dropdown-imp,
+.content :disabled + .list-imp {
+  cursor: url("styles/cursor/default.png"), auto;
+  -webkit-filter: grayscale(1);
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url(#greyscale);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
+  filter: gray;
+  color: #999;
+}
+
+/**
+* Rules for the slider.
+*/
+/* regular slider stuff */
+/* slider container */
+.slider-container {
+  height: 20px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* slider left edge */
+.slider-left-edge {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  background-image: url("styles/slider-left.png");
+  background-size: 100% 100%;
+}
+
+/* slider right edge */
+.slider-right-edge {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  right: 0px;
+  background-image: url("styles/slider-right.png");
+  background-size: 100% 100%;
+}
+
+/* slider background track */
+.slider-track {
+  position: absolute;
+  height: 20px;
+  left: 0;
+  right: 0;
+  background-image: url("styles/slider-track.png");
+  background-repeat: repeat-x;
+  background-size: 24px 100%;
+}
+
+/* the part of the slider that moves and indicates the value */
+.slider-thumb {
+  position: absolute;
+  height: 30px;
+  width: 15px;
+  margin-top: -5px;
+  left: 40px;
+  background-image: url("styles/slider-thumb.png");
+  background-size: 100% 100%;
+}
+
+/* golden slider stuff */
+/* golden slider container */
+.slider-container.golden {
+  height: 30px;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* golden slider left edge */
+.slider-left-edge.golden {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  left: 0px;
+  background-image: url("styles/slider-left-golden.png");
+  background-size: 100% 100%;
+}
+
+/* golden slider right edge */
+.slider-right-edge.golden {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 0px;
+  background-image: url("styles/slider-right-golden.png");
+  background-size: 100% 100%;
+}
+
+/* golden slider background track */
+.slider-track.golden {
+  position: absolute;
+  height: 30px;
+  left: 0;
+  right: 0;
+  background-image: url("styles/slider-track-golden.png");
+  background-repeat: repeat-x;
+  background-size: 40px 100%;
+}
+
+/* golden the part of the slider that moves and indicates the value */
+.slider-thumb.golden {
+  position: absolute;
+  height: 36px;
+  width: 18px;
+  margin-top: -4px;
+  left: 40px;
+  background-image: url("styles/slider-thumb-golden.png");
+  background-size: 100% 100%;
+}
+
+.social-icon {
+  transition: transform 0.3s ease;
+}
+.social-icon:hover {
+  transform: rotate(360deg);
+}

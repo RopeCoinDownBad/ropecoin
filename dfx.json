@@ -1,0 +1,48 @@
+{
+  "canisters": {
+    "blackhole": {
+      "candid": "src/backend/src/blackhole/blackhole.did",
+      "package": "blackhole",
+      "type": "rust"
+    },
+    "ropecoin": {
+      "candid": "src/backend/src/ropecoin/ropecoin.did",
+      "package": "ropecoin",
+      "type": "rust"
+    },
+    "ropecoin_ledger_canister": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2025-05-22/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2025-05-22/ic-icrc1-ledger.wasm.gz"
+    },
+    "ropecoin_index_canister": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2025-05-22/index-ng.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2025-05-22/ic-icrc1-index-ng.wasm.gz"
+    },
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/ledger-suite-icp-2025-05-15/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/ledger-suite-icp-2025-05-15/ledger-canister_notify-method.wasm.gz"
+    },
+    "fee_collector": {
+      "type": "rust",
+      "package": "fee_collector",
+      "candid": "src/backend/src/fee_collector/fee_collector.did"
+    }
+  },
+  "networks": {
+    "staging": {
+      "providers": ["https://icp0.io"],
+      "type": "persistent"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

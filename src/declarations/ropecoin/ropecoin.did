@@ -1,0 +1,53 @@
+type ConsentInfo = record {
+  metadata : ConsentMessageMetadata;
+  consent_message : ConsentMessage;
+};
+type ConsentMessage = variant {
+  LineDisplayMessage : record { pages : vec LineDisplayPage };
+  GenericDisplayMessage : text;
+};
+type ConsentMessageMetadata = record {
+  utc_offset_minutes : opt int16;
+  language : text;
+};
+type ConsentMessageRequest = record {
+  arg : blob;
+  method : text;
+  user_preferences : ConsentMessageSpec;
+};
+type ConsentMessageSpec = record {
+  metadata : ConsentMessageMetadata;
+  device_spec : opt DisplayMessageType;
+};
+type DisplayMessageType = variant {
+  GenericDisplay;
+  LineDisplay : record { characters_per_line : nat16; lines_per_page : nat16 };
+};
+type EnvName = variant { IC; Local; Staging };
+type ErrorInfo = record { description : text };
+type LineDisplayPage = record { lines : vec text };
+type PreSaleStatistics = record {
+  end_timestamp : nat64;
+  amount_of_ropecoin_to_distribute : nat64;
+  total_icp_deposited : nat64;
+};
+type Result = variant { Ok; Err : text };
+type Result_1 = variant { Ok : nat64; Err : text };
+type Result_2 = variant { Ok : vec record { principal; nat64 }; Err : text };
+type Result_3 = variant { Ok : PreSaleStatistics; Err : text };
+type Result_4 = variant { Ok : ConsentInfo; Err : ErrorInfo };
+type SupportedStandard = record { url : text; name : text };
+service : (EnvName) -> {
+  __get_candid_interface_tmp_hack : () -> (text) query;
+  add_deposit : (nat64) -> (Result);
+  add_word : (text) -> (Result);
+  get_amount_contributed : (principal) -> (Result_1) query;
+  get_deposits : () -> (Result_2) query;
+  get_pre_sale_statistics : () -> (Result_3) query;
+  get_words : () -> (vec text) query;
+  icrc10_supported_standards : () -> (vec SupportedStandard) query;
+  icrc21_canister_call_consent_message : (ConsentMessageRequest) -> (Result_4);
+  manually_distribute_rope : () -> (Result);
+  mint_ropes : (principal, nat64) -> (Result);
+  withdraw_icp : (nat64, principal) -> (Result);
+}

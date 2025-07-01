@@ -1,0 +1,41 @@
+{
+  "name": "ropecoin_frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start:staging": "vite --mode staging --port 3000 --host",
+    "start": "vite --mode development --port 3000 --host",
+    "build": "tsc && vite build",
+    "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "cross-fetch": "^3.1.6",
+    "dotenv": "^16.3.1",
+    "sass": "^1.63.6",
+    "typescript": "^5.1.3",
+    "vite": "^4.5.14",
+    "vite-plugin-environment": "^1.1.3",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+		"@dfinity/agent": "^2.3.0",
+    "@dfinity/candid": "^2.3.0",
+    "@dfinity/principal": "^2.3.0",
+    "@windoge98/plug-n-play": "^0.0.70",
+    "lit-html": "^2.8.0",
+    "random-words": "^2.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

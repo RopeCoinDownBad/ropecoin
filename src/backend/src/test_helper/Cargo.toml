@@ -1,0 +1,30 @@
+[package]
+name = "test_helper"
+version = "0.1.0"
+authors = ["ropecoin"]
+license = "GNU"
+edition = "2021"
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+path="lib.rs"
+
+[dependencies]
+candid = {workspace = true}
+pocket-ic ={ workspace = true}
+serde = {workspace = true}
+ic-management-canister-types = {workspace = true}
+ic-ledger-types = {workspace = true}
+icrc-ledger-types = {workspace = true}
+serde_bytes = {workspace = true}
+rand = "0.9.1"
+lazy_static = "1.4.0"
+sha2 = "0.10.8"
+ropecoin = {path = "../ropecoin"}
+
+
+
+
+
+
+

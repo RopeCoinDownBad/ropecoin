@@ -1,0 +1,32 @@
+type CanisterStatus = variant { Stopped; Stopping; Running };
+type CanisterStatusRequest = record { canister_id : principal };
+type CanisterStatusResponse = record {
+  status : CanisterStatus;
+  memory_size : nat64;
+  cycles : nat64;
+  settings : DefiniteCanisterSettings;
+  module_hash : opt blob;
+};
+type DefiniteCanisterSettings = record {
+  freezing_threshold : nat64;
+  controllers : vec principal;
+  memory_allocation : nat64;
+  compute_allocation : nat64;
+};
+type RejectionCode = variant {
+  NoError;
+  CanisterError;
+  SysTransient;
+  DestinationInvalid;
+  Unknown;
+  SysFatal;
+  CanisterReject;
+};
+type Result = variant {
+  Ok : CanisterStatusResponse;
+  Err : record { RejectionCode; text };
+};
+service : {
+  __get_candid_interface_tmp_hack : () -> (text) query;
+  canister_status : (CanisterStatusRequest) -> (Result) query;
+}

@@ -1,0 +1,19 @@
+[package]
+name = "fee_collector"
+description = "Fee collector canister that will burn half of the fees and send the other half to the marketing account"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+path="lib.rs"
+
+[dependencies]
+ic-cdk = {workspace = true}
+candid = {workspace = true}
+serde = {workspace = true}
+serde_bytes = {workspace = true}
+ic-stable-structures = {workspace = true}
+serde_cbor = {workspace = true}

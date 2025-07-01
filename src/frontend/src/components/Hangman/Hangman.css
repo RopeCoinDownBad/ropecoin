@@ -1,0 +1,277 @@
+.game-container {
+  position: relative;
+  margin: auto;
+  max-width: 600px;
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.figure-container {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.figure-part {
+  display: block;
+}
+
+.wrong-letters-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 50%;
+  max-height: 200px;
+}
+
+.wrong-letters-container p {
+  margin: 0 0 5px;
+}
+
+.wrong-letters-container span {
+  font-size: 24px;
+  margin: 2px;
+}
+
+.letters-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+.word {
+  display: flex;
+  max-width: 90%;
+}
+
+.letter {
+  border-bottom: 3px solid #fff;
+  display: inline-flex;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  height: 50px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.keyboard-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.keyboard-icon:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.keyboard-icon:active {
+  transform: translateY(0);
+}
+
+/* Show keyboard icon only on desktop */
+@media (min-width: 769px) {
+  .keyboard-icon {
+    display: inline-flex;
+  }
+}
+
+.popup-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* display: flex; */
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background: #2980b9;
+  border-radius: 5px;
+  box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.popup button {
+  cursor: pointer;
+  background-color: #fff;
+  color: #2980b9;
+  border: 0;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+.popup button:active {
+  transform: scale(0.98);
+}
+
+.popup button:focus {
+  outline: 0;
+}
+
+.notification-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px 10px 0 0;
+  padding: 15px 20px;
+  position: absolute;
+  bottom: -50px;
+  transition: transform 0.3s ease-in-out;
+  visibility: hidden;
+}
+
+.notification-container p {
+  margin: 0;
+}
+
+.notification-container.show {
+  transform: translateY(-50px);
+  visibility:visible; 
+}
+
+.hints-container {
+  position: absolute;
+  top: 20px;
+  right: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hints-container.show {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px 10px 0 0;
+  padding: 15px 20px;
+}
+
+.hints-container button {
+  cursor: pointer;
+  background-color: #fff;
+  color: #2980b9;
+  border: 0;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+.hints-container button:active {
+  transform: scale(0.98);
+}
+
+.hints-container button:focus {
+  outline: 0;
+}
+
+.play-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 300px;
+}
+
+.play-button {
+  background: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:hover {
+  background: #3498db;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.play-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:focus {
+  outline: none;
+}
+
+/* Mobile-only input for keyboard trigger */
+.mobile-input {
+  display: none;
+  width: 200px;
+  height: 40px;
+  margin-top: 1rem;
+  padding: 8px 12px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+}
+
+.mobile-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mobile-input.show {
+  display: block;
+}
+
+/* Show input only on mobile devices */
+@media (max-width: 768px) {
+  .mobile-input {
+    display: block;
+  }
+  
+  /* Mobile adjustments for wrong letters */
+  .wrong-letters-container {
+    top: 10px;
+    right: 10px;
+    max-width: 30%;
+    max-height: 150px;
+  }
+  
+  .wrong-letters-container p {
+    font-size: 12px;
+    margin: 0 0 3px;
+  }
+  
+  .wrong-letters-container span {
+    font-size: 16px;
+    margin: 1px;
+  }
+  
+  .letters-wrapper {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+}
