@@ -20,8 +20,6 @@ yarn.lock
 .env.development.local
 .env.test.local
 .env.production.local
-src/frontend/.env.production
-src/frontend/.env.staging
 
 # Debug logs
 npm-debug.log*
