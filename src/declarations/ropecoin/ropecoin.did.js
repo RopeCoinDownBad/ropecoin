@@ -66,9 +66,7 @@ export const idlFactory = ({ IDL }) => {
         [Result_4],
         [],
       ),
-    'manually_distribute_rope' : IDL.Func([], [Result], []),
-    'mint_ropes' : IDL.Func([IDL.Principal, IDL.Nat64], [Result], []),
-    'withdraw_icp' : IDL.Func([IDL.Nat64, IDL.Principal], [Result], []),
+    'withdraw' : IDL.Func([IDL.Principal], [Result_1], []),
   });
 };
 export const init = ({ IDL }) => {

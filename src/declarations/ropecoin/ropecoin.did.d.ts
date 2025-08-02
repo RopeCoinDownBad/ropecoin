@@ -64,9 +64,7 @@ export interface _SERVICE {
     [ConsentMessageRequest],
     Result_4
   >,
-  'manually_distribute_rope' : ActorMethod<[], Result>,
-  'mint_ropes' : ActorMethod<[Principal, bigint], Result>,
-  'withdraw_icp' : ActorMethod<[bigint, Principal], Result>,
+  'withdraw' : ActorMethod<[Principal], Result_1>,
 }
 export declare const idlFactory: IDL.InterfaceFactory;
 export declare const init: (args: { IDL: typeof IDL }) => IDL.Type[];

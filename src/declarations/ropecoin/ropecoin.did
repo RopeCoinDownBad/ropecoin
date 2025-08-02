@@ -47,7 +47,5 @@ service : (EnvName) -> {
   get_words : () -> (vec text) query;
   icrc10_supported_standards : () -> (vec SupportedStandard) query;
   icrc21_canister_call_consent_message : (ConsentMessageRequest) -> (Result_4);
-  manually_distribute_rope : () -> (Result);
-  mint_ropes : (principal, nat64) -> (Result);
-  withdraw_icp : (nat64, principal) -> (Result);
+  withdraw : (principal) -> (Result_1);
 }
