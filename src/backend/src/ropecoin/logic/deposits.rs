@@ -1,4 +1,4 @@
-use crate::api::icp_ledger_api::{Account as IcpAccount, AllowanceArgs, Result3, TransferFromArgs};
+use crate::api::icp_ledger_api::{Account as IcpAccount, AllowanceArgs, Result3, TransferFromArgs, TransferArg as IcpTransferArg, Result_ as IcpTransferResult};
 use crate::api::ropecoin_ledger_api::{Account, TransferArg, TransferResult};
 use crate::constants::{
     ICP_LEDGER_FEE, PRESALE_AMOUNT_OF_ROPECOIN_TO_DISTRIBUTE, PRESALE_END_TIMESTAMP,
@@ -185,10 +185,10 @@ impl DepositsLogic {
                 amount: Nat::from(deposited_amount),
             })
             .await
-            .map_err(|e| e.1.tostring())?;
+            .map_err(|e| e.1.to_string())?;
 
         // if the transfer fails reset the deposit amount to the previous value
-        if let IcpTransferResult::Err() = transfer_result {
+        if let IcpTransferResult::Err(_) = transfer_result {
             DEPOSITS.with(|deposits| {
                 deposits.borrow_mut().insert(principal, deposited_amount);
             });
@@ -198,5 +198,4 @@ impl DepositsLogic {
         // return the result
         Ok(deposited_amount)
     }
-
 }

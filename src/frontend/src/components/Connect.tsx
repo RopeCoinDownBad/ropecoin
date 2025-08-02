@@ -156,6 +156,7 @@ export default function Connect({
             >
               {availableWallets.map((wallet) => (
                 <button
+                  key={wallet.id}
                   className="button"
                   onClick={() => handleConnect(wallet.id)}
                   disabled={connecting}

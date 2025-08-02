@@ -12,7 +12,7 @@ export interface PreSaleStatsRef {
 }
 
 export const PreSaleStats = forwardRef<PreSaleStatsRef>((props, ref) => {
-  const { wallet } = useWallet();
+  const { wallet, setShowWalletOptions, setShowGetRope } = useWallet();
   const ropecoinActor = useRopecoinActor();
 
   const [timeRemaining, setTimeRemaining] = useState<string>("");
@@ -102,25 +102,45 @@ export const PreSaleStats = forwardRef<PreSaleStatsRef>((props, ref) => {
 
   return (
     <div>
-      <h1>Pre Sale Stats</h1>
+      <h1>The Rope Snapped</h1>
       <p>
         Total ICP Deposited:{" "}
         {(Number(stats?.total_icp_deposited) / DECIMALS).toLocaleString()}
       </p>
-      <p>
-        Amount of Ropecoin to Distribute:{" "}
-        {(
-          Number(stats?.amount_of_ropecoin_to_distribute) / DECIMALS
-        ).toLocaleString()}
-      </p>
+
       <p>Time Remaining: {timeRemaining}</p>
       {contributed !== null && (
         <p>Amount Contributed: {Number(contributed) / DECIMALS} Ropecoin</p>
       )}
-      <h1>
-        Target - 500 ICP{" "}
-        <a onClick={() => setShowTargetInfo(!showTargetInfo)}>(i)</a>
-      </h1>
+
+      <img
+        src="/animations/guy-swinging.gif"
+        alt="Noose hanging"
+        style={{
+          maxWidth: "100px",
+          height: "auto",
+          margin: "0 auto 1rem",
+          display: "block",
+        }}
+      />
+
+      <p>
+        We didn&apos;t hit our presale target — so we&apos;re not launching the
+        token. No rugs, no drama, just the brutal honesty of the bear market.
+      </p>
+      <p>
+        You can{" "}
+        <a
+          onClick={() => {
+            wallet ? setShowGetRope(true) : setShowWalletOptions(true);
+          }}
+        >
+          withdraw your full deposit
+        </a>{" "}
+        and send it to any wallet you like. The rope may be coiled for now… but
+        the meme never dies.
+      </p>
+      <p>Thanks to all the real ones who showed up. Stay degen. 🪦</p>
 
       {showTargetInfo && (
         <>
@@ -159,8 +179,8 @@ export const PreSaleStats = forwardRef<PreSaleStatsRef>((props, ref) => {
               }}
             >
               <p>
-                The target is the minimum amount of ICP that the pre-sale needs to
-                reach in order to be successful.
+                The target is the minimum amount of ICP that the pre-sale needs
+                to reach in order to be successful.
                 <br />
                 If the target is not reached, the pre-sale will be cancelled and
                 all contributions will be refunded.

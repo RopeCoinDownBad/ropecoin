@@ -55,6 +55,8 @@ interface WalletContextType {
   setShowWalletOptions: (show: boolean) => void;
   signedRopecoinActor: ActorSubclass<RopecoinService> | null;
   signedICPLedgerActor: ActorSubclass<LedgerService> | null;
+  showGetRope: boolean;
+  setShowGetRope: (show: boolean) => void;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -62,6 +64,8 @@ const WalletContext = createContext<WalletContextType | undefined>(undefined);
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [wallet, setWallet] = useState<any>(null);
   const [showWalletOptions, setShowWalletOptions] = useState(false);
+  const [showGetRope, setShowGetRope] = useState(false);
+
   const [signedRopecoinActor, setSignedRopecoinActor] =
     useState<ActorSubclass<RopecoinService> | null>(null);
   const [signedICPLedgerActor, setSignedICPLedgerActor] =
@@ -108,6 +112,8 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         setShowWalletOptions,
         signedRopecoinActor,
         signedICPLedgerActor,
+        showGetRope,
+        setShowGetRope,
       }}
     >
       {children}

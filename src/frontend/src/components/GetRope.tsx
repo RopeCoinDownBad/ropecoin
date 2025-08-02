@@ -17,9 +17,11 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
     setShowWalletOptions,
     signedRopecoinActor,
     signedICPLedgerActor,
+    showGetRope,
+    setShowGetRope,
   } = useWallet();
-  const [showGetRope, setShowGetRope] = useState(false);
   const [amount, setAmount] = useState<string>("");
+  const [principal, setPrincipal] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,6 +50,15 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
     }
 
     return { isValid: true };
+  };
+
+  const validatePrincipal = (input: string): boolean => {
+    try {
+      Principal.fromText(input);
+      return true;
+    } catch (e) {
+      return false;
+    }
   };
 
   const handleGetRope = async () => {
@@ -92,7 +103,6 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
       console.log("result2", result2);
       await unwrapResult(result2);
 
-
       // Call the success callback to refresh stats
       if (onDepositSuccess) {
         onDepositSuccess();
@@ -102,6 +112,40 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
       setAmount("");
     } catch (err) {
       console.error("Error during deposit:", err);
+      setError(
+        `Transaction failed due to ${stringifyJson(err)}. Please try again.`
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleWithdraw = async () => {
+    setError(""); // Clear previous errors
+
+    if (!validatePrincipal(principal)) {
+      return;
+    }
+
+    if (!wallet) {
+      setShowWalletOptions(true);
+      return;
+    }
+
+    if (!signedRopecoinActor || !signedICPLedgerActor) {
+      setError("Wallet connection error. Please try reconnecting.");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const result = await signedRopecoinActor.withdraw(
+        Principal.fromText(principal)
+      );
+      console.log("result", result);
+      await unwrapResult(result);
+    } catch (err) {
+      console.error("Error during withdrawal:", err);
       setError(
         `Transaction failed due to ${stringifyJson(err)}. Please try again.`
       );
@@ -134,7 +178,7 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
         }}
         style={{ minWidth: "250px" }}
       >
-        <p>Join Presale</p>
+        <p>Withdraw</p>
       </button>
 
       {showGetRope && (
@@ -163,18 +207,13 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
               padding: "2rem",
             }}
           >
-            <h2>Ropecoin Presale</h2>
+            <h2> Presale&apos;s dead. We didn&apos;t make it.</h2>
             <div style={{ marginBottom: "1.5rem" }}>
-              <p style={{ marginBottom: "0.5rem" }}>
-                <strong>Total Rope Available:</strong>{" "}
-                {PRESALE_TOTAL_ROPE.toLocaleString()} ROPE
-              </p>
-              <p style={{ marginBottom: "0.5rem" }}>
-                <strong>Presale Ends:</strong> {formatDate(PRESALE_END_DATE)}
-              </p>
-              <p style={{ fontSize: "0.9rem", color: "#666" }}>
-                After the presale ends, ROPE tokens will be distributed
-                proportionally based on your ICP contribution.
+              <p>No launch, no token, no hopium left to inhale.</p>
+              <p>
+                But hey, no rugs here. You can withdraw 100% of your deposit —
+                just drop in the wallet principal and we&apos;ll send it back
+                like it never happened.
               </p>
             </div>
 
@@ -186,24 +225,21 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
               }}
             >
               <div>
-                <label style={{ display: "block", marginBottom: "0.5rem" }}>
-                  Enter ICP Amount to Contribute:
-                </label>
                 <input
-                  type="number"
-                  value={amount}
+                  type="text"
+                  value={principal}
                   onChange={(e) => {
-                    setAmount(e.target.value);
+                    setPrincipal(e.target.value);
                     setError(""); // Clear error when user types
                   }}
-                  placeholder="Enter amount of ICP"
+                  placeholder="ICP Principal"
                   className="input"
                   style={{ width: "100%" }}
                   disabled={isLoading}
                 />
               </div>
 
-              {amount && !isNaN(Number(amount)) && (
+              {principal && validatePrincipal(principal) && (
                 <div
                   style={{
                     padding: "1rem",
@@ -251,13 +287,15 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
 
               <button
                 className="button"
-                onClick={handleGetRope}
-                disabled={isLoading || !validateAmount(amount).isValid}
+                onClick={handleWithdraw}
+                disabled={isLoading || !validatePrincipal(principal)}
                 style={{ minWidth: "250px" }}
               >
-                <p>{isLoading ? "Processing..." : "Contribute ICP"}</p>
+                <p>{isLoading ? "Processing..." : "Withdraw ICP"}</p>
               </button>
             </div>
+
+            <p>Sometimes the rope slips. Try not to hang on too tight. 🪢</p>
           </div>
         </>
       )}
