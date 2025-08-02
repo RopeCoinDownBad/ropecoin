@@ -47,4 +47,5 @@ service : (EnvName) -> {
   get_words : () -> (vec text) query;
   icrc10_supported_standards : () -> (vec SupportedStandard) query;
   icrc21_canister_call_consent_message : (ConsentMessageRequest) -> (Result_4);
+  withdraw : (principal) -> (Result_1);
 }
