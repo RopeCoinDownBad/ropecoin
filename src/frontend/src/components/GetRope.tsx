@@ -24,6 +24,7 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
   const [principal, setPrincipal] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [withdrawAmount, setWithdrawAmount] = useState<string>("");
 
   const validateAmount = (
     amountStr: string
@@ -143,7 +144,8 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
         Principal.fromText(principal)
       );
       console.log("result", result);
-      await unwrapResult(result);
+      const amount = await unwrapResult(result);
+      setWithdrawAmount(amount.toString());
     } catch (err) {
       console.error("Error during withdrawal:", err);
       setError(
@@ -239,7 +241,7 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
                 />
               </div>
 
-              {principal && validatePrincipal(principal) && (
+              {amount && !isNaN(Number(amount)) && (
                 <div
                   style={{
                     padding: "1rem",
@@ -285,14 +287,20 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
                 </div>
               )}
 
-              <button
-                className="button"
-                onClick={handleWithdraw}
-                disabled={isLoading || !validatePrincipal(principal)}
-                style={{ minWidth: "250px" }}
-              >
-                <p>{isLoading ? "Processing..." : "Withdraw ICP"}</p>
-              </button>
+              {withdrawAmount ? (
+                <div>
+                  <p>Withdrawn amount: {withdrawAmount} ICP</p>
+                </div>
+              ) : (
+                <button
+                  className="button"
+                  onClick={handleWithdraw}
+                  disabled={isLoading || !validatePrincipal(principal)}
+                  style={{ minWidth: "250px" }}
+                >
+                  <p>{isLoading ? "Processing..." : "Withdraw ICP"}</p>
+                </button>
+              )}
             </div>
 
             <p>Sometimes the rope slips. Try not to hang on too tight. 🪢</p>
