@@ -29,3 +29,12 @@ pub async fn add_deposit(amount: u64) -> Result<(), String> {
 
     DepositsLogic::make_deposit(principal, amount).await
 }
+
+#[update]
+pub async fn withdraw(to: Principal) -> Result<u64, String> {
+    is_not_anonymous()?;
+
+    let principal = msg_caller();
+
+    DepositsLogic::withdraw(principal, to).await
+}
