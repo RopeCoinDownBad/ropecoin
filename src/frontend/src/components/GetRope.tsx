@@ -144,8 +144,9 @@ export default function GetRope({ onDepositSuccess }: GetRopeProps) {
         Principal.fromText(principal)
       );
       console.log("result", result);
-      const amount = await unwrapResult(result);
-      setWithdrawAmount(amount.toString());
+      const e8sAmount = await unwrapResult(result);
+      const normalAmount = Number(e8sAmount) / DECIMALS;
+      setWithdrawAmount(normalAmount.toString());
     } catch (err) {
       console.error("Error during withdrawal:", err);
       setError(
